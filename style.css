@@ -1,0 +1,315 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f7f6; /* Light background */
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    color: #333;
+}
+
+.calculator-wrapper {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 700px; /* Wider container to accommodate two columns */
+    text-align: center;
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 30px;
+    color: #555;
+    font-size: 1.8em;
+    text-align: left;
+}
+
+.calculator-container {
+    display: grid; /* Use CSS Grid for layout */
+    grid-template-columns: 1fr 1fr; /* Two columns of equal width */
+    gap: 40px; /* Space between columns */
+    align-items: start; /* Align items to the start of the grid cell */
+}
+
+.input-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between input groups */
+}
+
+.input-group {
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.input-controls {
+    display: flex; /* Arrange value display and number input side-by-side */
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.input-display {
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #000;
+    margin-right: 10px; /* Space between value display and number input */
+}
+
+.input-display span:first-child {
+    margin-right: 4px;
+}
+
+.value-input {
+    width: 80px; /* Adjust width as needed */
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    text-align: right; /* Align text to the right */
+    -moz-appearance: textfield; /* Hide Firefox stepper */
+}
+
+/* Hide stepper arrows for Chrome, Safari, Edge */
+.value-input::-webkit-outer-spin-button,
+.value-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+/* Styling for the range input sliders (mostly the same as before) */
+input[type="range"] {
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    background: #ddd;
+    height: 8px;
+    border-radius: 5px;
+    outline: none;
+    margin-top: 5px;
+    /* Dynamic background for track fill (requires JS) */
+    background: linear-gradient(to right, #4CAF50 0%, #4CAF50 var(--value, 0%), #ddd var(--value, 0%), #ddd 100%);
+    background-size: 100% 8px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Thumb styling */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #4CAF50;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #4CAF50;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+input[type="range"]::-ms-thumb {
+    width: 20px;
+    height: 20px;
+    background: #4CAF50;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover,
+input[type="range"]::-moz-range-thumb:hover,
+input[type="range"]::-ms-thumb:hover {
+    background: #45a049;
+}
+
+
+.chart-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.legend {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+}
+
+.legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    margin-right: 5px;
+}
+
+.principal-color {
+    background-color: #2193b0;
+}
+
+.interest-color {
+    background-color: #e67e22;
+}
+
+
+.chart-container {
+    position: relative;
+    height: 200px;
+    width: 200px;
+}
+
+.results-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    text-align: left;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1em;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #eee;
+}
+
+.result-item:last-child {
+    border-bottom: none;
+}
+
+.result-item span:first-child {
+    color: #555;
+}
+
+.result-item span:last-child {
+    font-weight: bold;
+    color: #000;
+}
+
+#monthlyEmiResult {
+     color: #4CAF50 !important;
+}
+
+.amortization-link {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.9em;
+    color: #007bff;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .calculator-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .chart-container {
+        height: 250px;
+        width: 250px;
+    }
+
+    .results-section {
+         grid-template-columns: 1fr;
+    }
+
+     .result-item {
+        justify-content: space-between;
+        border-bottom: 1px dashed #eee;
+        padding-bottom: 10px;
+     }
+}
+
+@media (max-width: 480px) {
+     .calculator-wrapper {
+        padding: 20px;
+     }
+
+     h1 {
+        font-size: 1.5em;
+     }
+
+     .input-group label, .input-display {
+        font-size: 1em;
+     }
+
+     .input-controls {
+         flex-direction: column; /* Stack controls vertically on small screens */
+         align-items: flex-start;
+     }
+
+     .input-display {
+        margin-right: 0;
+        margin-bottom: 5px;
+     }
+
+     .value-input {
+        width: 100%; /* Make input full width */
+        text-align: left;
+     }
+
+
+     input[type="range"] {
+        height: 6px;
+     }
+
+    input[type="range"]::-webkit-slider-thumb,
+    input[type="range"]::-moz-range-thumb,
+    input[type="range"]::-ms-thumb {
+        width: 18px;
+        height: 18px;
+    }
+
+     .chart-container {
+        height: 180px;
+        width: 180px;
+     }
+
+     .legend {
+        font-size: 0.8em;
+     }
+
+     .results-section {
+        gap: 10px;
+     }
+
+     .result-item {
+        font-size: 1em;
+        padding-bottom: 8px;
+     }
+}
