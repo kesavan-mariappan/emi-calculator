@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMI Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+</head>
+<body>
+
+    <div class="calculator-wrapper">
+        <h1>EMI Calculator</h1>
+        <div class="calculator-container">
+            <div class="input-section">
+                <div class="input-group">
+                    <label for="loanAmount">Loan amount</label>
+                    <div class="input-controls">
+                        <div class="input-display">
+                            <span>₹</span>
+                            <span id="loanAmountValue">1,00,000</span>
+                        </div>
+                         <input type="number" id="loanAmountInput" class="value-input" value="100000" min="10000" max="10000000" step="5000">
+                    </div>
+                    <input type="range" id="loanAmountSlider" min="10000" max="10000000" value="100000" step="5000">
+                </div>
+
+                <div class="input-group">
+                    <label for="interestRate">Rate of interest (p.a)</label>
+                     <div class="input-controls">
+                        <div class="input-display">
+                            <span id="interestRateValue">10</span><span>%</span>
+                        </div>
+                        <input type="number" id="interestRateInput" class="value-input" value="10" min="1" max="20" step="0.1">
+                    </div>
+                    <input type="range" id="interestRateSlider" min="1" max="20" value="10" step="0.1">
+                </div>
+
+                <div class="input-group">
+                    <label for="loanTenure">Loan tenure</label>
+                     <div class="input-controls">
+                        <div class="input-display">
+                            <span id="loanTenureValue">1</span><span> Yr</span>
+                        </div>
+                        <input type="number" id="loanTenureInput" class="value-input" value="1" min="1" max="30" step="1">
+                    </div>
+                    <input type="range" id="loanTenureSlider" min="1" max="30" value="1" step="1">
+                </div>
+            </div>
+
+            <div class="chart-section">
+                 <div class="legend">
+                    <div class="legend-item">
+                        <span class="legend-color principal-color"></span>
+                        <span>Principal amount</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color interest-color"></span>
+                        <span>Interest amount</span>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="emiPieChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="results-section">
+            <div class="result-item">
+                <span>Monthly EMI</span>
+                <span id="monthlyEmiResult">₹8,792</span>
+            </div>
+             <div class="result-item">
+                <span>Principal amount</span>
+                <span id="principalAmountResult">₹1,00,000</span>
+            </div>
+             <div class="result-item">
+                <span>Total interest</span>
+                <span id="totalInterestResult">₹5,499</span>
+            </div>
+             <div class="result-item">
+                <span>Total amount</span>
+                <span id="totalAmountResult">₹1,05,499</span>
+            </div>
+        </div>
+         <p class="amortization-link">Your Amortization Details (Yearly/Monthly)</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
